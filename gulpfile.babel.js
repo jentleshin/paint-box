@@ -15,8 +15,8 @@ const routes = {
     dest: "dest/css",
   },
   image: {
-    watch: "img/*",
-    src: "img/*",
+    watch: "src/img/*",
+    src: "src/img/*",
     dest: "dest/img",
   },
 };

@@ -1,3 +1,192 @@
+@import "_variables";
+@import "_extend";
+
+* {
+  box-sizing: border-box;
+}
+
 h1 {
-  color: red;
+  @extend %navText;
+}
+h2 {
+  @extend %title1;
+}
+h3 {
+  @extend %title2;
+}
+.italic {
+  font-style: italic;
+}
+button {
+  background: none;
+  color: black;
+  border: solid 1px black;
+  height: 60px;
+  width: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+header {
+  background-color: white;
+  position: fixed;
+  top: 0px;
+  height: $header_height;
+  width: 100%;
+
+  display: grid;
+  //   grid-template-columns: 140px repeat(3, 1fr) 140px;
+  //   grid-template-rows: 1fr;
+  grid-template:
+    ". left center right ." 1fr
+    / 140px 1fr 1fr 1fr $padding;
+
+  div {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: 100%;
+    column-gap: 30px;
+  }
+  .header__left {
+    grid-area: left;
+    justify-self: start;
+    align-self: center;
+  }
+  .header__right {
+    grid-area: right;
+    justify-self: end;
+    align-self: center;
+  }
+  .header__center {
+    grid-area: center;
+    display: flex;
+    justify-content: center;
+    img {
+      height: $header_height;
+    }
+  }
+}
+main {
+  // background: grey;
+  height: 5000vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: $padding 1fr $padding;
+  grid-template-rows: repeat(5, max-content);
+  row-gap: 75px;
+  margin-top: 150px;
+
+  section {
+    grid-column: 2;
+    width: 100%;
+    background: black;
+  }
+  .section__1,
+  .section__4 {
+    display: grid;
+    grid-template: "self" 1fr / 1fr;
+    .text {
+      grid-area: self;
+      width: 100%;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      h2 {
+        width: 500px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+    }
+    img {
+      grid-area: self;
+      width: 100%;
+    }
+  }
+  .section__2 {
+    background: rgb(241, 234, 227);
+    display: flex;
+    img {
+      width: 50%;
+    }
+    .text {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      h3 {
+        width: 350px;
+        margin-top: 30px;
+        margin-bottom: 60px;
+      }
+    }
+  }
+
+  .section__3 {
+    background: none;
+    display: grid;
+    width: 100%;
+
+    grid-template:
+      "text text text"
+      "pro1 pro2 pro3"
+      / 1fr 1fr 1fr;
+    .text {
+      grid-area: text;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      h3 {
+        margin-top: 30px;
+      }
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h3 {
+        font-size: 26px; //font reactive
+        margin-top: 10px;
+      }
+      img {
+        width: 100%;
+      }
+      .price {
+        background: none;
+        color: gray;
+        border: none;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+          cursor: pointer;
+          h1 {
+            border-bottom: solid 1px gray;
+          }
+        }
+      }
+    }
+    .pro1 {
+      grid-area: pro1;
+    }
+    .pro2 {
+      grid-area: pro2;
+    }
+    .pro3 {
+      grid-area: pro3;
+    }
+  }
+  .section__5 {
+  }
 }
